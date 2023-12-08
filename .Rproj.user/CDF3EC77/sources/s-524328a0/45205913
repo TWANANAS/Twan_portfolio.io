@@ -3,7 +3,7 @@
     "path": "~/Portfolio/bookdown/02-CV.Rmd",
     "project_path": "02-CV.Rmd",
     "type": "r_markdown",
-    "hash": "2877049208",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1702040975559.0,
@@ -17,7 +17,7 @@
         "rmdVisualMode": "true",
         "rmdVisualWrapConfigured": "true",
         "docOutlineVisible": "1",
-        "rmdVisualModeLocation": "2976:1543"
+        "rmdVisualModeLocation": "2:0"
     },
     "folds": "",
     "lastKnownWriteTime": 1702041706,
