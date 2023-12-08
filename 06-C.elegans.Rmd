@@ -2,4 +2,53 @@
 In this part we will be reproducing an analysis with data supplied by J. Louter (INT/ILC)
 Different compounds were tested on adult C.elegans and the amount of offspring were counted.
 
+## Getting the data
+First we will need to get the data from somewhere, we use wget to download the file excel file from github.
+```{bash include=FALSE}
+# Go to data_raw
+cd data_raw/ 
+
+# Download the excel sheet dataset
+wget -O "CE.LIQ.FLOW.062_Tidydata.xlsx" https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx
+
+```
+Now we can read the file into R.
+```{r}
+# Load libraries
+library(readxl)
+library(dplyr)
+
+# Read the excel file
+C.elegans_data <- read_excel(path = "data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx")
+
+# Display the important rows
+C.elegans_data %>% select(c(RawData, compName, compConcentration))
+
+```
+Here we see that compConcentration is of chr type, so we have to change it into a numeric type.
+```{r}
+# Load readr
+library(readr)
+
+# Use parse_number to change the conecentration into numeric
+C.elegans_data$compConcentration <- parse_number(C.elegans_data$compConcentration)
+
+# Display the rows again
+C.elegans_data %>% select(c(RawData, compName, compConcentration))
+```
+
+```{r}
+# Load required libraries
+library(ggplot2)
+
+# Create scatterplot
+ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color = compName, shape = expType)) +
+  geom_point(position = position_jitter(width = 0.2, height = 0)) +
+  labs(x = "Compound Concentration", y = "Raw Data Counts") +
+  scale_x_continuous(labels = scales::comma_format()) +  # Fix x-axis labels for readability
+  theme_minimal()  # Optional: Customize the theme if needed
+
+```
+The graph is really cramped into the left part because of a couple of very high concentrations. This occurs because the concentrations are created by diluting the previous solution by 1/10.
+
 
