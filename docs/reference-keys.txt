@@ -11,7 +11,7 @@ opleidingen
 werk
 talen
 vaardigheden
-cross
+looking-ahead
 chapters-and-sub-chapters
 captioned-figures-and-tables
 parts
@@ -25,11 +25,10 @@ dengue
 summarzing-flu-and-dengue
 merging-the-tables
 creating-some-plots
+repdrocuing
+getting-the-data-1
 blocks
 equations
 theorems-and-proofs
 callout-blocks
-sharing-your-book
-publishing
-pages
-metadata-for-sharing
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
