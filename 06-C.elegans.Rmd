@@ -4,7 +4,7 @@ Different compounds were tested on adult C.elegans and the amount of offspring w
 
 ## Getting the data
 First we will need to get the data from somewhere, we use wget to download the file excel file from github.
-```{bash include=FALSE}
+```{bash results='hide'}
 # Go to data_raw
 cd data_raw/ 
 
@@ -13,7 +13,7 @@ wget -O "CE.LIQ.FLOW.062_Tidydata.xlsx" https://github.com/DataScienceILC/tlsc-d
 
 ```
 Now we can read the file into R.
-```{r}
+```{r warning=FALSE}
 # Load libraries
 library(readxl)
 library(dplyr)
@@ -43,12 +43,58 @@ library(ggplot2)
 
 # Create scatterplot
 ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color = compName, shape = expType)) +
-  geom_point(position = position_jitter(width = 0.2, height = 0)) +
-  labs(x = "Compound Concentration", y = "Raw Data Counts") +
-  scale_x_continuous(labels = scales::comma_format()) +  # Fix x-axis labels for readability
-  theme_minimal()  # Optional: Customize the theme if needed
+  geom_point() +
+  labs(x = "Compound Concentration", y = "Raw Data Counts") 
 
 ```
+
 The graph is really cramped into the left part because of a couple of very high concentrations. This occurs because the concentrations are created by diluting the previous solution by 1/10.
 
+An obvious fix for this is to use an log10 transformation on the x-axis.
+```{r}
+# Create plot, note that we added + 0.01 this is becasue the log10 of 0 is undefined.
+# So adding 0.01 makes sure that points where concentration is 0 (controlNegative) show up in the graph
+```
+
+
+```{r}
+ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, color = compName, shape = expType)) +
+  geom_point(position = position_jitter(width = 0.2, height = 0.2)) + # Add jitter
+  labs(x = "Log10(Compound Concentration)", y = "Raw Data Counts")
+```
+
+
+```{r}
+```
+
+This looks way better, we also added some jitter to prevent points from overlapping.
+
+
+The positive control for this experiment is 1.5% ethanol solution 
+
+Both the positive control and the control Vehicle A are in percentage ethanol solution. We can use a formula to transfer these to nM like the rest. $$nM=(x*10^7)/46,07$$ Where x is the percentage ethanol. Here we use this formula to change the percentages to molarity but its important to do this only in the rows where the compount is ethanol and the compunit pct.
+```{r}
+# Change compConcentration where compname is Ethanol and compUnit pct
+C.elegans_data$compConcentration <- ifelse(C.elegans_data$compName == "Ethanol" & C.elegans_data$compUnit == "pct",
+                                            (C.elegans_data$compConcentration * 10^7) / 46.07,
+                                            C.elegans_data$compConcentration)
+```
+
+
+
+We also create a faceted graph to make it a bit easier to see the different controls.
+```{r}
+# Create a faceted scatterplot with log-transformed x-axis and jitter using crosses
+ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, color = compName)) +
+  geom_point(shape = "+", size = 3, position = position_jitter(width = 0.2, height = 0.2)) +
+  labs(x = "Log10(Compound Concentration)", y = "Raw Data Counts") +
+  facet_wrap(~expType, scales = "fixed", ncol = 2) +  # split graph in 4 for every exptype
+  theme_minimal()
+```
+
+```{r}
+ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, color = compName, shape = expType)) +
+  geom_point(position = position_jitter(width = 0.2, height = 0.2)) + # Add jitter
+  labs(x = "Log10(Compound Concentration)", y = "Raw Data Counts") 
+```
 
