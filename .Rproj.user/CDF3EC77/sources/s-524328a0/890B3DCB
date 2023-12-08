@@ -3,7 +3,7 @@
     "path": "~/Portfolio/bookdown/_output.yml",
     "project_path": "_output.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "1546416924",
     "contents": "",
     "dirty": false,
     "created": 1702040948678.0,
@@ -11,14 +11,16 @@
     "relative_order": 4,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "10,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1702040945,
+    "lastKnownWriteTime": 1702041405,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1702040945,
+    "last_content_update": 1702041405395,
     "read_only": false,
     "read_only_alternatives": []
 }
