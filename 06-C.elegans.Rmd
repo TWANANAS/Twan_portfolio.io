@@ -1,0 +1,5 @@
+# Repdrocuing
+In this part we will be reproducing an analysis with data supplied by J. Louter (INT/ILC)
+Different compounds were tested on adult C.elegans and the amount of offspring were counted.
+
+
