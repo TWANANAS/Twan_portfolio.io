@@ -1,9 +1,9 @@
 {
     "id": "45205913",
-    "path": "~/Portfolio/bookdown/01-intro.Rmd",
-    "project_path": "01-intro.Rmd",
+    "path": "~/Portfolio/bookdown/02-CV.Rmd",
+    "project_path": "02-CV.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "2877049208",
     "contents": "",
     "dirty": false,
     "created": 1702040975559.0,
@@ -11,14 +11,20 @@
     "relative_order": 7,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "72,0",
+        "scrollLine": "0",
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "docOutlineVisible": "1",
+        "rmdVisualModeLocation": "2976:1543"
     },
     "folds": "",
-    "lastKnownWriteTime": 1702040945,
+    "lastKnownWriteTime": 1702041706,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1702040945,
+    "last_content_update": 1702041706,
     "read_only": false,
     "read_only_alternatives": []
 }
