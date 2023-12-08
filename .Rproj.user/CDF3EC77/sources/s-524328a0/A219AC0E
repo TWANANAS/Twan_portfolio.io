@@ -1,24 +1,26 @@
 {
     "id": "A219AC0E",
-    "path": "~/Portfolio/bookdown/03-looking_ahead.Rmd",
+    "path": "~/Twan_portfolio.io/03-looking_ahead.Rmd",
     "project_path": "03-looking_ahead.Rmd",
     "type": "r_markdown",
-    "hash": "3698781651",
+    "hash": "0",
     "contents": "",
-    "dirty": false,
+    "dirty": true,
     "created": 1702041575151.0,
     "source_on_save": false,
     "relative_order": 9,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "0,15",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1702040945,
+    "lastKnownWriteTime": 1702048689,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1702040945,
+    "last_content_update": 1702049067434,
     "read_only": false,
     "read_only_alternatives": []
 }

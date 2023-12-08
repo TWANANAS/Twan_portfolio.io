@@ -1,6 +1,6 @@
 {
     "id": "9286AC78",
-    "path": "~/Portfolio/bookdown/_bookdown.yml",
+    "path": "~/Twan_portfolio.io/_bookdown.yml",
     "project_path": "_bookdown.yml",
     "type": "yaml",
     "hash": "0",
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "1,18",
+        "cursorPosition": "5,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1702041471,
+    "lastKnownWriteTime": 1702049010,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1702041471930,
+    "last_content_update": 1702049010296,
     "read_only": false,
     "read_only_alternatives": []
 }
