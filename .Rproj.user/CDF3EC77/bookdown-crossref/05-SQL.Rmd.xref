@@ -1,0 +1,11 @@
+h1:sql SQL
+h2:getting-the-data Getting the data
+h2:tidy-the-data Tidy the data
+h2:using-sql-and-r-to-inspect-data Using SQL and R to inspect data
+h3:gapminder Gapminder
+h3:flu Flu
+h3:dengue Dengue
+h2:summarzing-flu-and-dengue Summarzing flu and dengue
+h2:merging-the-tables Merging the tables
+h2:creating-some-plots Creating some plots
+
