@@ -1,12 +1,24 @@
-# Parts
+# Peer review
 
-You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file. 
+<h2>
 
-Add a numbered part: `# (PART) Act one {-}` (followed by `# A chapter`)
+Per‐ and polyfluoroalkyl substances activate UPR pathway, induce steatosis and fibrosis in liver cells
 
-Add an unnumbered part: `# (PART\*) Act one {-}` (followed by `# A chapter`)
+</h2>
 
-Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff {-}` (followed by `# A chapter`). Chapters in an appendix are prepended with letters instead of numbers.
+<h5>
 
+Qi, Q., Niture, S., Gadi, S., Arthur, E., Moore, J., Levine, K. E., & Kumar, D. (2023)
 
+</h5>
 
+| Transparency Criteria       | Definition                                                                                                                                                                                                                                                               | Response Type       | Score                     |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|---------------------------|
+| Study Purpose               | A concise statement in the introduction of the article, often in the last paragraph, that establishes the reason the research was conducted. Also called the study objective.                                                                                            | Binary              | no                        |
+| Data Availability Statement | A statement, in an individual section offset from the main body of text, that explains how or if one can access a study’s data. The title of the section may vary, but it must explicitly mention data; it is therefore distinct from a supplementary materials section. | Binary              | no                        |
+| Data Location               | Where the article’s data can be accessed, either raw or processed.                                                                                                                                                                                                       | Found Value         | ArrayExpress E‐MTAB‐11670 |
+| Study Location              | Author has stated in the methods section where the study took place or the data’s country/region of origin.                                                                                                                                                              | Binary; Found Value | no                        |
+| Author Review               | The professionalism of the contact information that the author has provided in the manuscript.                                                                                                                                                                           | Found Value         | Tier 3                    |
+| Ethics Statement            | A statement within the manuscript indicating any ethical concerns, including the presence of sensitive data.                                                                                                                                                             | Binary              | no                        |
+| Funding Statement           | A statement within the manuscript indicating whether or not the authors received funding for their research.                                                                                                                                                             | Binary              | yes                       |
+| Code Availability           | Authors have shared access to the most updated code that they used in their study, including code used for analysis.                                                                                                                                                     | Binary              | no                        |
