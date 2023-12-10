@@ -3,3 +3,6 @@ output_dir: "docs"
 language:
   ui:
     chapter_name: "Chapter "
+html:
+    toc: true
+    toc_depth: 0
