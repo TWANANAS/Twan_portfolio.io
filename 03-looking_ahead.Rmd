@@ -1,2 +1,5 @@
-# Looking ahead
+# Learning a New Skill
+
+I will be using the tool [Sturgeon](https://github.com/marcpaga/sturgeon) to clasify tumors found in the ccentral nervous system. I will be following the steps in this paper ["Ultra-fast deep-learned CNS tumour classification during surgery"](https://www.nature.com/articles/s41586-023-06615-2#Sec2) and using this [GSE209865](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE209865) dataset from GEO.
+
 
