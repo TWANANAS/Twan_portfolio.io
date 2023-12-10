@@ -36,8 +36,8 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="checking.html"/>
-<link rel="next" href="repdrocuing.html"/>
+<link rel="prev" href="looking-into-reproducible-science.html"/>
+<link rel="next" href="reproducing-an-analysis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -167,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="looking-ahead.html"><a href="looking-ahead.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
 <li class="chapter" data-level="3.2" data-path="looking-ahead.html"><a href="looking-ahead.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="checking.html"><a href="checking.html"><i class="fa fa-check"></i><b>4</b> Checking</a></li>
+<li class="chapter" data-level="4" data-path="looking-into-reproducible-science.html"><a href="looking-into-reproducible-science.html"><i class="fa fa-check"></i><b>4</b> Looking into Reproducible Science</a></li>
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#getting-the-data"><i class="fa fa-check"></i><b>5.1</b> Getting the data</a></li>
@@ -182,13 +182,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="sql.html"><a href="sql.html#merging-the-tables"><i class="fa fa-check"></i><b>5.5</b> Merging the tables</a></li>
 <li class="chapter" data-level="5.6" data-path="sql.html"><a href="sql.html#creating-some-plots"><i class="fa fa-check"></i><b>5.6</b> Creating some plots</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="repdrocuing.html"><a href="repdrocuing.html"><i class="fa fa-check"></i><b>6</b> Repdrocuing</a>
+<li class="chapter" data-level="6" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html"><i class="fa fa-check"></i><b>6</b> Reproducing an Analysis</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="repdrocuing.html"><a href="repdrocuing.html#getting-the-data-1"><i class="fa fa-check"></i><b>6.1</b> Getting the data</a></li>
-<li class="chapter" data-level="6.2" data-path="repdrocuing.html"><a href="repdrocuing.html#normalizing-the-data"><i class="fa fa-check"></i><b>6.2</b> Normalizing the data</a></li>
-<li class="chapter" data-level="6.3" data-path="repdrocuing.html"><a href="repdrocuing.html#visualizing-the-data"><i class="fa fa-check"></i><b>6.3</b> Visualizing the data</a></li>
-<li class="chapter" data-level="6.4" data-path="repdrocuing.html"><a href="repdrocuing.html#normalizing-the-data-again"><i class="fa fa-check"></i><b>6.4</b> Normalizing the data again</a></li>
-<li class="chapter" data-level="6.5" data-path="repdrocuing.html"><a href="repdrocuing.html#visualizing-the-data-again"><i class="fa fa-check"></i><b>6.5</b> Visualizing the data again</a></li>
+<li class="chapter" data-level="6.1" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html#getting-the-data-1"><i class="fa fa-check"></i><b>6.1</b> Getting the data</a></li>
+<li class="chapter" data-level="6.2" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html#normalizing-the-data"><i class="fa fa-check"></i><b>6.2</b> Normalizing the data</a></li>
+<li class="chapter" data-level="6.3" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html#visualizing-the-data"><i class="fa fa-check"></i><b>6.3</b> Visualizing the data</a></li>
+<li class="chapter" data-level="6.4" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html#normalizing-the-data-again"><i class="fa fa-check"></i><b>6.4</b> Normalizing the data again</a></li>
+<li class="chapter" data-level="6.5" data-path="reproducing-an-analysis.html"><a href="reproducing-an-analysis.html#visualizing-the-data-again"><i class="fa fa-check"></i><b>6.5</b> Visualizing the data again</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
 <ul>
@@ -265,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-21"><a href="sql.html#cb6-21" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot; &quot;</span>, tidy_flu_data<span class="sc">$</span>country)</span>
 <span id="cb6-22"><a href="sql.html#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-23"><a href="sql.html#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
-<span id="cb6-24"><a href="sql.html#cb6-24" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_flu_data<span class="sc">$</span>country)</span>
+<span id="cb6-24"><a href="sql.html#cb6-24" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_flu_data<span class="sc">$</span>country)</span>
 <span id="cb6-25"><a href="sql.html#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-26"><a href="sql.html#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># dengue_data</span></span>
 <span id="cb6-27"><a href="sql.html#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dengue_data tidy</span></span>
@@ -280,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-36"><a href="sql.html#cb6-36" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_dengue_data<span class="sc">$</span>year)</span>
 <span id="cb6-37"><a href="sql.html#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-38"><a href="sql.html#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
-<span id="cb6-39"><a href="sql.html#cb6-39" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_dengue_data<span class="sc">$</span>country)</span>
+<span id="cb6-39"><a href="sql.html#cb6-39" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_dengue_data<span class="sc">$</span>country)</span>
 <span id="cb6-40"><a href="sql.html#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-41"><a href="sql.html#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-42"><a href="sql.html#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
@@ -525,8 +525,8 @@ Flu cases per capita per country.</p>
           </div>
         </div>
       </div>
-<a href="checking.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="repdrocuing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="looking-into-reproducible-science.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reproducing-an-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

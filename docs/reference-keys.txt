@@ -11,7 +11,7 @@ vaardigheden
 looking-ahead
 chapters-and-sub-chapters
 captioned-figures-and-tables
-checking
+looking-into-reproducible-science
 sql
 getting-the-data
 tidy-the-data
@@ -22,7 +22,7 @@ dengue
 summarzing-flu-and-dengue
 merging-the-tables
 creating-some-plots
-repdrocuing
+reproducing-an-analysis
 getting-the-data-1
 normalizing-the-data
 visualizing-the-data
