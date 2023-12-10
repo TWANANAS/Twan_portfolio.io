@@ -51,7 +51,7 @@ tidy_flu_data$year <- as.factor(tidy_flu_data$year)
 tidy_flu_data$country <- gsub("\\.", " ", tidy_flu_data$country)
 
 # turn country into factor
-tidy_flu_data$country <- factor(tidy_flu_data$country)
+tidy_flu_data$country <- as.factor(tidy_flu_data$country)
 
 # dengue_data
 # Make dengue_data tidy
@@ -66,7 +66,7 @@ tidy_dengue_data <- tidy_dengue_data %>%
 tidy_dengue_data$year <- as.factor(tidy_dengue_data$year)
 
 # turn country into factor
-tidy_dengue_data$country <- factor(tidy_dengue_data$country)
+tidy_dengue_data$country <- as.factor(tidy_dengue_data$country)
 
 
 

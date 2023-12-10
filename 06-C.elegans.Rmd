@@ -1,9 +1,11 @@
-# Repdrocuing
-In this part we will be reproducing an analysis with data supplied by J. Louter (INT/ILC)
-Different compounds were tested on adult C.elegans and the amount of offspring were counted.
+# Reproducing an Analysis
+
+In this part we will be reproducing an analysis with data supplied by J. Louter (INT/ILC) Different compounds were tested on adult C.elegans and the amount of offspring were counted.
 
 ## Getting the data
+
 First we will need to get the data from somewhere, we use wget to download the excel file from github.
+
 ```{bash results='hide'}
 # Go to data_raw
 cd data_raw/ 
@@ -12,7 +14,9 @@ cd data_raw/
 wget -O "CE.LIQ.FLOW.062_Tidydata.xlsx" https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx
 
 ```
+
 Now we can read the file into R.
+
 ```{r warning=FALSE}
 # Load libraries
 library(readxl)
@@ -21,6 +25,7 @@ library(dplyr)
 # Read the excel file
 C.elegans_data <- read_excel(path = "data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx")
 ```
+
 The file is now read into R.
 
 ## Normalizing the data
@@ -30,7 +35,9 @@ The file is now read into R.
 C.elegans_data %>% select(c(RawData, compName, compConcentration)) 
 
 ```
+
 Here we see that compConcentration is of chr type, so we have to change it into a numeric type.
+
 ```{r}
 # Load readr
 library(readr)
@@ -41,6 +48,7 @@ C.elegans_data$compConcentration <- parse_number(C.elegans_data$compConcentratio
 # Display the rows again
 C.elegans_data %>% select(c(RawData, compName, compConcentration)) 
 ```
+
 We can see the type is now of dbl type.
 
 ## Visualizing the data
@@ -59,6 +67,7 @@ ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color = compName,
 The graph is really cramped into the left part because of a couple of very high concentrations. This occurs because the concentrations are created by diluting the previous solution by 1/10.
 
 An obvious fix for this is to use an log10 transformation on the x-axis.
+
 ```{r}
 # Create plot, note that we added + 0.01 this is becasue the log10 of 0 is undefined.
 # So adding 0.01 makes sure that points where concentration is 0 (controlNegative) show up in the graph
@@ -66,11 +75,13 @@ ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, col
   geom_point(position = position_jitter(width = 0.2, height = 0.2)) + # Add jitter
   labs(x = "Log10(Compound Concentration (nM))", y = "Raw Data Counts")
 ```
+
 This looks way better, we also added some jitter to prevent points from overlapping.
 
 ## Normalizing the data again
 
 We have put nanomolar(nM) on the x axis but not all the data is in nM some points are in percentage(pct) as shown below
+
 ```{r}
 #show that both nM and pct are used
 C.elegans_data$compUnit %>% unique()
@@ -100,6 +111,7 @@ C.elegans_data$compConcentration <- ifelse(C.elegans_data$compName == "Ethanol" 
 Now that we changed the values from percentage to nM we can visualize the data again.
 
 ## Visualizing the data again
+
 Now the data is acctually normalized we can finally visualize the data so we create a scatterplot again.
 
 ```{r}
@@ -117,4 +129,24 @@ ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, col
   labs(x = "Log10(Compound Concentration)", y = "Raw Data Counts") +
   facet_wrap(~expType, scales = "fixed", ncol = 2) +  # split graph in 4 for every exptype
   theme_minimal()
+```
+
+The negative control for this experiment is S-medium 0 nM so basically nothing is added, and the positive control is a high concentration ethanol.
+
+> *Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan.*
+
+Normalize data so the mean of the negative control is 1.
+
+```{r}
+# Find the mean of controlNegative
+controlNegative_mean <- mean(C.elegans_data$RawData[C.elegans_data$expType == "controlNegative"], na.rm = TRUE)
+# Use mean to nomralize data
+C.elegans_data <- C.elegans_data %>%
+  mutate(Normalized_RawData = RawData / controlNegative_mean)
+```
+
+```{r}
+ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = Normalized_RawData, color = compName, shape = expType)) +
+  geom_point(position = position_jitter(width = 0.2, height = 0.2)) + 
+  labs(x = "Log10(Compound Concentration)", y = "Normalized Raw Data") 
 ```
