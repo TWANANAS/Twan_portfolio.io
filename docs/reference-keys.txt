@@ -33,4 +33,3 @@ equations
 theorems-and-proofs
 callout-blocks
 covid-report
-my-hosts-enemy-is-my-enemy-plasmids-carrying-crispr-cas-as-a-defence-against-phages
