@@ -36,7 +36,7 @@ set in the _output.yml file.</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="peer-review.html"/>
+<link rel="prev" href="checking.html"/>
 <link rel="next" href="repdrocuing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -167,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="looking-ahead.html"><a href="looking-ahead.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
 <li class="chapter" data-level="3.2" data-path="looking-ahead.html"><a href="looking-ahead.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="peer-review.html"><a href="peer-review.html"><i class="fa fa-check"></i><b>4</b> Peer review</a></li>
+<li class="chapter" data-level="4" data-path="checking.html"><a href="checking.html"><i class="fa fa-check"></i><b>4</b> Checking</a></li>
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#getting-the-data"><i class="fa fa-check"></i><b>5.1</b> Getting the data</a></li>
@@ -224,98 +224,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-the-data" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Getting the data<a href="sql.html#getting-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First we need to get the data for the exercise, we use wget to download them from github.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="sql.html#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="sql.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Go to data_raw</span></span>
-<span id="cb3-3"><a href="sql.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data_raw/ </span>
-<span id="cb3-4"><a href="sql.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="sql.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the flu dataset</span></span>
-<span id="cb3-6"><a href="sql.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> flu_data.csv https://raw.githubusercontent.com/DataScienceILC/tlsc-dsfb26v-20_workflows/main/data/flu_data.csv</span>
-<span id="cb3-7"><a href="sql.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="sql.html#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dengue dataset</span></span>
-<span id="cb3-9"><a href="sql.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> dengue_data.csv https://raw.githubusercontent.com/DataScienceILC/tlsc-dsfb26v-20_workflows/main/data/dengue_data.csv</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="sql.html#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="sql.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Go to data_raw</span></span>
+<span id="cb4-3"><a href="sql.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data_raw/ </span>
+<span id="cb4-4"><a href="sql.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="sql.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the flu dataset</span></span>
+<span id="cb4-6"><a href="sql.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> flu_data.csv https://raw.githubusercontent.com/DataScienceILC/tlsc-dsfb26v-20_workflows/main/data/flu_data.csv</span>
+<span id="cb4-7"><a href="sql.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="sql.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the dengue dataset</span></span>
+<span id="cb4-9"><a href="sql.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-O</span> dengue_data.csv https://raw.githubusercontent.com/DataScienceILC/tlsc-dsfb26v-20_workflows/main/data/dengue_data.csv</span></code></pre></div>
 </div>
 <div id="tidy-the-data" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Tidy the data<a href="sql.html#tidy-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Its important to make the data tidy so every table matches structure wise, in these steps we also make some changes to make merging later easier.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="sql.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load needed libraries</span></span>
-<span id="cb4-2"><a href="sql.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb4-3"><a href="sql.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb4-4"><a href="sql.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
-<span id="cb4-5"><a href="sql.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sql.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the different data</span></span>
-<span id="cb5-2"><a href="sql.html#cb5-2" aria-hidden="true" tabindex="-1"></a>flu_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/flu_data.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span>) <span class="co"># skip = 11 to skip the first 11 lines which contain metadata</span></span>
-<span id="cb5-3"><a href="sql.html#cb5-3" aria-hidden="true" tabindex="-1"></a>dengue_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/dengue_data.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span>)</span>
-<span id="cb5-4"><a href="sql.html#cb5-4" aria-hidden="true" tabindex="-1"></a>gapminder_data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(gapminder)</span>
-<span id="cb5-5"><a href="sql.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="sql.html#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="sql.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="do">## flu_data</span></span>
-<span id="cb5-8"><a href="sql.html#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make flu_data tidy</span></span>
-<span id="cb5-9"><a href="sql.html#cb5-9" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="ot">&lt;-</span> flu_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="sql.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Date, <span class="at">names_to =</span> <span class="st">&quot;country&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cases&quot;</span>)</span>
-<span id="cb5-11"><a href="sql.html#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="sql.html#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Split Date into year, month, day</span></span>
-<span id="cb5-13"><a href="sql.html#cb5-13" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="ot">&lt;-</span> tidy_flu_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-14"><a href="sql.html#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Date, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb5-15"><a href="sql.html#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="sql.html#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert year into factor</span></span>
-<span id="cb5-17"><a href="sql.html#cb5-17" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_flu_data<span class="sc">$</span>year)</span>
-<span id="cb5-18"><a href="sql.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="sql.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># flu_data uses dots instead of spaces in country names (New.Zealand)</span></span>
-<span id="cb5-20"><a href="sql.html#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># So to make joining the tables easier we need to replace the dots with spaces</span></span>
-<span id="cb5-21"><a href="sql.html#cb5-21" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot; &quot;</span>, tidy_flu_data<span class="sc">$</span>country)</span>
-<span id="cb5-22"><a href="sql.html#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="sql.html#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
-<span id="cb5-24"><a href="sql.html#cb5-24" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_flu_data<span class="sc">$</span>country)</span>
-<span id="cb5-25"><a href="sql.html#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="sql.html#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># dengue_data</span></span>
-<span id="cb5-27"><a href="sql.html#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dengue_data tidy</span></span>
-<span id="cb5-28"><a href="sql.html#cb5-28" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="ot">&lt;-</span> dengue_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-29"><a href="sql.html#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Date, <span class="at">names_to =</span> <span class="st">&quot;country&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cases&quot;</span>)</span>
-<span id="cb5-30"><a href="sql.html#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-31"><a href="sql.html#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Split Date into year, month, day</span></span>
-<span id="cb5-32"><a href="sql.html#cb5-32" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="ot">&lt;-</span> tidy_dengue_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-33"><a href="sql.html#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Date, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
-<span id="cb5-34"><a href="sql.html#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="sql.html#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert year into factor</span></span>
-<span id="cb5-36"><a href="sql.html#cb5-36" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_dengue_data<span class="sc">$</span>year)</span>
-<span id="cb5-37"><a href="sql.html#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-38"><a href="sql.html#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
-<span id="cb5-39"><a href="sql.html#cb5-39" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_dengue_data<span class="sc">$</span>country)</span>
-<span id="cb5-40"><a href="sql.html#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-41"><a href="sql.html#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-42"><a href="sql.html#cb5-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-43"><a href="sql.html#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Save tidy_dengue_data</span></span>
-<span id="cb5-44"><a href="sql.html#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tidy_dengue_data, <span class="st">&quot;data/tidy_dengue_data.csv&quot;</span>)</span>
-<span id="cb5-45"><a href="sql.html#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(tidy_dengue_data, <span class="st">&quot;data/tidy_dengue_data.rds&quot;</span>)</span>
-<span id="cb5-46"><a href="sql.html#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-47"><a href="sql.html#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Save tidy_flu_data</span></span>
-<span id="cb5-48"><a href="sql.html#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tidy_flu_data, <span class="st">&quot;data/tidy_flu_data.csv&quot;</span>)</span>
-<span id="cb5-49"><a href="sql.html#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(tidy_flu_data, <span class="st">&quot;data/tidy_flu_data.rds&quot;</span>)</span>
-<span id="cb5-50"><a href="sql.html#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-51"><a href="sql.html#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Save clean gapminder_data</span></span>
-<span id="cb5-52"><a href="sql.html#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder_data, <span class="st">&quot;data/tidy_gapminder_data.csv&quot;</span>)</span>
-<span id="cb5-53"><a href="sql.html#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(gapminder_data, <span class="st">&quot;data/tidy_gapminder_data.rds&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="sql.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#load needed libraries</span></span>
+<span id="cb5-2"><a href="sql.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-3"><a href="sql.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-4"><a href="sql.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
+<span id="cb5-5"><a href="sql.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dslabs)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="sql.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the different data</span></span>
+<span id="cb6-2"><a href="sql.html#cb6-2" aria-hidden="true" tabindex="-1"></a>flu_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/flu_data.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span>) <span class="co"># skip = 11 to skip the first 11 lines which contain metadata</span></span>
+<span id="cb6-3"><a href="sql.html#cb6-3" aria-hidden="true" tabindex="-1"></a>dengue_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data_raw/dengue_data.csv&quot;</span>, <span class="at">skip =</span> <span class="dv">11</span>)</span>
+<span id="cb6-4"><a href="sql.html#cb6-4" aria-hidden="true" tabindex="-1"></a>gapminder_data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(gapminder)</span>
+<span id="cb6-5"><a href="sql.html#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="sql.html#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="sql.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="do">## flu_data</span></span>
+<span id="cb6-8"><a href="sql.html#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make flu_data tidy</span></span>
+<span id="cb6-9"><a href="sql.html#cb6-9" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="ot">&lt;-</span> flu_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="sql.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Date, <span class="at">names_to =</span> <span class="st">&quot;country&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cases&quot;</span>)</span>
+<span id="cb6-11"><a href="sql.html#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="sql.html#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Split Date into year, month, day</span></span>
+<span id="cb6-13"><a href="sql.html#cb6-13" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="ot">&lt;-</span> tidy_flu_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="sql.html#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Date, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb6-15"><a href="sql.html#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="sql.html#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert year into factor</span></span>
+<span id="cb6-17"><a href="sql.html#cb6-17" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_flu_data<span class="sc">$</span>year)</span>
+<span id="cb6-18"><a href="sql.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="sql.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co"># flu_data uses dots instead of spaces in country names (New.Zealand)</span></span>
+<span id="cb6-20"><a href="sql.html#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># So to make joining the tables easier we need to replace the dots with spaces</span></span>
+<span id="cb6-21"><a href="sql.html#cb6-21" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.&quot;</span>, <span class="st">&quot; &quot;</span>, tidy_flu_data<span class="sc">$</span>country)</span>
+<span id="cb6-22"><a href="sql.html#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="sql.html#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
+<span id="cb6-24"><a href="sql.html#cb6-24" aria-hidden="true" tabindex="-1"></a>tidy_flu_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_flu_data<span class="sc">$</span>country)</span>
+<span id="cb6-25"><a href="sql.html#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="sql.html#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># dengue_data</span></span>
+<span id="cb6-27"><a href="sql.html#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Make dengue_data tidy</span></span>
+<span id="cb6-28"><a href="sql.html#cb6-28" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="ot">&lt;-</span> dengue_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-29"><a href="sql.html#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Date, <span class="at">names_to =</span> <span class="st">&quot;country&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;cases&quot;</span>)</span>
+<span id="cb6-30"><a href="sql.html#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="sql.html#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Split Date into year, month, day</span></span>
+<span id="cb6-32"><a href="sql.html#cb6-32" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="ot">&lt;-</span> tidy_dengue_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-33"><a href="sql.html#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(Date, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>)</span>
+<span id="cb6-34"><a href="sql.html#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="sql.html#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert year into factor</span></span>
+<span id="cb6-36"><a href="sql.html#cb6-36" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tidy_dengue_data<span class="sc">$</span>year)</span>
+<span id="cb6-37"><a href="sql.html#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="sql.html#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="co"># turn country into factor</span></span>
+<span id="cb6-39"><a href="sql.html#cb6-39" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data<span class="sc">$</span>country <span class="ot">&lt;-</span> <span class="fu">factor</span>(tidy_dengue_data<span class="sc">$</span>country)</span>
+<span id="cb6-40"><a href="sql.html#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="sql.html#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="sql.html#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="sql.html#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Save tidy_dengue_data</span></span>
+<span id="cb6-44"><a href="sql.html#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tidy_dengue_data, <span class="st">&quot;data/tidy_dengue_data.csv&quot;</span>)</span>
+<span id="cb6-45"><a href="sql.html#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(tidy_dengue_data, <span class="st">&quot;data/tidy_dengue_data.rds&quot;</span>)</span>
+<span id="cb6-46"><a href="sql.html#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="sql.html#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Save tidy_flu_data</span></span>
+<span id="cb6-48"><a href="sql.html#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(tidy_flu_data, <span class="st">&quot;data/tidy_flu_data.csv&quot;</span>)</span>
+<span id="cb6-49"><a href="sql.html#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(tidy_flu_data, <span class="st">&quot;data/tidy_flu_data.rds&quot;</span>)</span>
+<span id="cb6-50"><a href="sql.html#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="sql.html#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Save clean gapminder_data</span></span>
+<span id="cb6-52"><a href="sql.html#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(gapminder_data, <span class="st">&quot;data/tidy_gapminder_data.csv&quot;</span>)</span>
+<span id="cb6-53"><a href="sql.html#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(gapminder_data, <span class="st">&quot;data/tidy_gapminder_data.rds&quot;</span>)</span></code></pre></div>
 <p>The chunck beneath is to create an connection object, that can be used to connect to a Postgres database.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="sql.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
-<span id="cb6-2"><a href="sql.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
-<span id="cb6-3"><a href="sql.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb6-4"><a href="sql.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="sql.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create connection object to connect to local PostgreSQL database</span></span>
-<span id="cb6-6"><a href="sql.html#cb6-6" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(), </span>
-<span id="cb6-7"><a href="sql.html#cb6-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname =</span> <span class="st">&quot;workflowsdb&quot;</span>, </span>
-<span id="cb6-8"><a href="sql.html#cb6-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">&quot;localhost&quot;</span>, </span>
-<span id="cb6-9"><a href="sql.html#cb6-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">port=</span><span class="st">&quot;5432&quot;</span>, </span>
-<span id="cb6-10"><a href="sql.html#cb6-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">user=</span><span class="st">&quot;postgres&quot;</span>, </span>
-<span id="cb6-11"><a href="sql.html#cb6-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">password=</span><span class="st">&quot;PASSWORD&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="sql.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
+<span id="cb7-2"><a href="sql.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
+<span id="cb7-3"><a href="sql.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb7-4"><a href="sql.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="sql.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create connection object to connect to local PostgreSQL database</span></span>
+<span id="cb7-6"><a href="sql.html#cb7-6" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(), </span>
+<span id="cb7-7"><a href="sql.html#cb7-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname =</span> <span class="st">&quot;workflowsdb&quot;</span>, </span>
+<span id="cb7-8"><a href="sql.html#cb7-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">&quot;localhost&quot;</span>, </span>
+<span id="cb7-9"><a href="sql.html#cb7-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">port=</span><span class="st">&quot;5432&quot;</span>, </span>
+<span id="cb7-10"><a href="sql.html#cb7-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">user=</span><span class="st">&quot;postgres&quot;</span>, </span>
+<span id="cb7-11"><a href="sql.html#cb7-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">password=</span><span class="st">&quot;PASSWORD&quot;</span>)</span></code></pre></div>
 <p>This chunck would normaly create tables in the postgres database.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="sql.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidy_flu_data into Postgres database</span></span>
-<span id="cb7-2"><a href="sql.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;tidy_flu_data&quot;</span>, <span class="fu">as.data.frame</span>(tidy_flu_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-3"><a href="sql.html#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="sql.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidy_dengue_data into Postgres database</span></span>
-<span id="cb7-5"><a href="sql.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;tidy_dengue_data&quot;</span>, <span class="fu">as.data.frame</span>(tidy_dengue_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb7-6"><a href="sql.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="sql.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load gapminder_data into Postgres database</span></span>
-<span id="cb7-8"><a href="sql.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder_data&quot;</span>, <span class="fu">as.data.frame</span>(gapminder_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="sql.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidy_flu_data into Postgres database</span></span>
+<span id="cb8-2"><a href="sql.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;tidy_flu_data&quot;</span>, <span class="fu">as.data.frame</span>(tidy_flu_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-3"><a href="sql.html#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="sql.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load tidy_dengue_data into Postgres database</span></span>
+<span id="cb8-5"><a href="sql.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;tidy_dengue_data&quot;</span>, <span class="fu">as.data.frame</span>(tidy_dengue_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-6"><a href="sql.html#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="sql.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load gapminder_data into Postgres database</span></span>
+<span id="cb8-8"><a href="sql.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;gapminder_data&quot;</span>, <span class="fu">as.data.frame</span>(gapminder_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="using-sql-and-r-to-inspect-data" class="section level2 hasAnchor" number="5.3">
 <h2><span class="header-section-number">5.3</span> Using SQL and R to inspect data<a href="sql.html#using-sql-and-r-to-inspect-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -325,8 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here we order the gapminder data by life expactancy.
 <img src="data/images/SQL_example_gapminder.png" alt="Using SQL to order the gapminder data by life expectancy" />
 Using R with the same goal.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="sql.html#cb8-1" aria-hidden="true" tabindex="-1"></a>gapminder_data <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="sql.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(life_expectancy))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="sql.html#cb9-1" aria-hidden="true" tabindex="-1"></a>gapminder_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="sql.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(life_expectancy))</span></code></pre></div>
 <pre><code>## # A tibble: 10,545 × 9
 ##    country      year infant_mortality life_expectancy fertility population   gdp
 ##    &lt;fct&gt;       &lt;int&gt;            &lt;dbl&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;
@@ -347,9 +347,9 @@ Using R with the same goal.</p>
 <p>Here we select only the cases in France from the flu data.
 <img src="data/images/SQL_example_flu.png" alt="Using SQL to select only the cases in France in the flu data" />
 Again using R for the same goal.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="sql.html#cb10-1" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="sql.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">tolower</span>(country) <span class="sc">==</span> <span class="st">&#39;france&#39;</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(cases)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="sql.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, month, day)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="sql.html#cb11-1" aria-hidden="true" tabindex="-1"></a>tidy_flu_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="sql.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">tolower</span>(country) <span class="sc">==</span> <span class="st">&#39;france&#39;</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(cases)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="sql.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year, month, day)</span></code></pre></div>
 <pre><code>## # A tibble: 620 × 5
 ##    year  month day   country cases
 ##    &lt;fct&gt; &lt;chr&gt; &lt;chr&gt; &lt;fct&gt;   &lt;int&gt;
@@ -370,9 +370,9 @@ Again using R for the same goal.</p>
 <p>Here we sort dengue by cases from high to low.
 <img src="data/images/SQL_example_dengue.png" alt="Using SQL to sort dengue by cases" />
 And again R for the same goal.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="sql.html#cb12-1" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="sql.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cases)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="sql.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cases))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="sql.html#cb13-1" aria-hidden="true" tabindex="-1"></a>tidy_dengue_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="sql.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(cases)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="sql.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(cases))</span></code></pre></div>
 <pre><code>## # A tibble: 6,263 × 5
 ##    year  month day   country     cases
 ##    &lt;fct&gt; &lt;chr&gt; &lt;chr&gt; &lt;fct&gt;       &lt;dbl&gt;
@@ -394,50 +394,50 @@ And again R for the same goal.</p>
 <h2><span class="header-section-number">5.4</span> Summarzing flu and dengue<a href="sql.html#summarzing-flu-and-dengue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Both the flu and dengue data have datapoints every day, while gapminder has a datapoint for every year. Before we can join flu and dengue with gapminder we first have to summarize the data so flu and dengue to have a datapoint for every year.</p>
 <p>For flu we can just take the total of every case, hence we use sum in the summarize function.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="sql.html#cb14-1" aria-hidden="true" tabindex="-1"></a>summarized_flu_data <span class="ot">&lt;-</span> tidy_flu_data <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="sql.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="sql.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, year) <span class="sc">%&gt;%</span></span>
-<span id="cb14-4"><a href="sql.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_cases_flu =</span> <span class="fu">sum</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a href="sql.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
-<p>For dengue, we need to calculate the average because the data is on a scale where 1 represents the highest search activity in a country, and 0 represents the lowest. Therefore, we use the mean function in the summarize function.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="sql.html#cb15-1" aria-hidden="true" tabindex="-1"></a>summarized_dengue_data <span class="ot">&lt;-</span> tidy_dengue_data <span class="sc">%&gt;%</span></span>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="sql.html#cb15-1" aria-hidden="true" tabindex="-1"></a>summarized_flu_data <span class="ot">&lt;-</span> tidy_flu_data <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="sql.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>))) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="sql.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, year) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="sql.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_cases_dengue =</span> <span class="fu">mean</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="sql.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_cases_flu =</span> <span class="fu">sum</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-5"><a href="sql.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<p>For dengue, we need to calculate the average because the data is on a scale where 1 represents the highest search activity in a country, and 0 represents the lowest. Therefore, we use the mean function in the summarize function.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="sql.html#cb16-1" aria-hidden="true" tabindex="-1"></a>summarized_dengue_data <span class="ot">&lt;-</span> tidy_dengue_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="sql.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Date =</span> <span class="fu">as.Date</span>(<span class="fu">paste</span>(year, month, day, <span class="at">sep =</span> <span class="st">&quot;-&quot;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="sql.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(country, year) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="sql.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_cases_dengue =</span> <span class="fu">mean</span>(cases, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="sql.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
 <p>Now we load the new summarized files into the database.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="sql.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load summarized_flu_data</span></span>
-<span id="cb16-2"><a href="sql.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;summarized_flu_data&quot;</span>, <span class="fu">as.data.frame</span>(summarized_flu_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb16-3"><a href="sql.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="sql.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load summarized_dengue_data</span></span>
-<span id="cb16-5"><a href="sql.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;summarized_dengue_data&quot;</span>, <span class="fu">as.data.frame</span>(summarized_dengue_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="sql.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load summarized_flu_data</span></span>
+<span id="cb17-2"><a href="sql.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;summarized_flu_data&quot;</span>, <span class="fu">as.data.frame</span>(summarized_flu_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-3"><a href="sql.html#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="sql.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load summarized_dengue_data</span></span>
+<span id="cb17-5"><a href="sql.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;summarized_dengue_data&quot;</span>, <span class="fu">as.data.frame</span>(summarized_dengue_data), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="merging-the-tables" class="section level2 hasAnchor" number="5.5">
 <h2><span class="header-section-number">5.5</span> Merging the tables<a href="sql.html#merging-the-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Normally this could be used to merge the tables and load the table into R.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="sql.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL to merge tables</span></span>
-<span id="cb17-2"><a href="sql.html#cb17-2" aria-hidden="true" tabindex="-1"></a>sql_query <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb17-3"><a href="sql.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
-<span id="cb17-4"><a href="sql.html#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.country, f.country) AS merged_country,</span></span>
-<span id="cb17-5"><a href="sql.html#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.year, f.year::text) AS merged_year,</span></span>
-<span id="cb17-6"><a href="sql.html#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">    d.avg_cases_dengue,</span></span>
-<span id="cb17-7"><a href="sql.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="st">    f.total_cases_flu,</span></span>
-<span id="cb17-8"><a href="sql.html#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="st">    g.*</span></span>
-<span id="cb17-9"><a href="sql.html#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="st">FROM</span></span>
-<span id="cb17-10"><a href="sql.html#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">    summarized_dengue_data AS d</span></span>
-<span id="cb17-11"><a href="sql.html#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">FULL JOIN</span></span>
-<span id="cb17-12"><a href="sql.html#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">    summarized_flu_data AS f ON d.year = f.year::text AND d.country = f.country</span></span>
-<span id="cb17-13"><a href="sql.html#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN</span></span>
-<span id="cb17-14"><a href="sql.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="st">    gapminder_data AS g ON COALESCE(d.year, f.year::text) = g.year::text AND COALESCE(d.country, f.country) = g.country</span></span>
-<span id="cb17-15"><a href="sql.html#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY</span></span>
-<span id="cb17-16"><a href="sql.html#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.avg_cases_dengue, 0) DESC, COALESCE(f.total_cases_flu, 0) DESC;</span></span>
-<span id="cb17-17"><a href="sql.html#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb17-18"><a href="sql.html#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Export table to R</span></span>
-<span id="cb17-19"><a href="sql.html#cb17-19" aria-hidden="true" tabindex="-1"></a>merged_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, sql_query)</span>
-<span id="cb17-20"><a href="sql.html#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(merged_table)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="sql.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL to merge tables</span></span>
+<span id="cb18-2"><a href="sql.html#cb18-2" aria-hidden="true" tabindex="-1"></a>sql_query <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb18-3"><a href="sql.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb18-4"><a href="sql.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.country, f.country) AS merged_country,</span></span>
+<span id="cb18-5"><a href="sql.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.year, f.year::text) AS merged_year,</span></span>
+<span id="cb18-6"><a href="sql.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="st">    d.avg_cases_dengue,</span></span>
+<span id="cb18-7"><a href="sql.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="st">    f.total_cases_flu,</span></span>
+<span id="cb18-8"><a href="sql.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="st">    g.*</span></span>
+<span id="cb18-9"><a href="sql.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="st">FROM</span></span>
+<span id="cb18-10"><a href="sql.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="st">    summarized_dengue_data AS d</span></span>
+<span id="cb18-11"><a href="sql.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="st">FULL JOIN</span></span>
+<span id="cb18-12"><a href="sql.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="st">    summarized_flu_data AS f ON d.year = f.year::text AND d.country = f.country</span></span>
+<span id="cb18-13"><a href="sql.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="st">JOIN</span></span>
+<span id="cb18-14"><a href="sql.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="st">    gapminder_data AS g ON COALESCE(d.year, f.year::text) = g.year::text AND COALESCE(d.country, f.country) = g.country</span></span>
+<span id="cb18-15"><a href="sql.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY</span></span>
+<span id="cb18-16"><a href="sql.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="st">    COALESCE(d.avg_cases_dengue, 0) DESC, COALESCE(f.total_cases_flu, 0) DESC;</span></span>
+<span id="cb18-17"><a href="sql.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb18-18"><a href="sql.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Export table to R</span></span>
+<span id="cb18-19"><a href="sql.html#cb18-19" aria-hidden="true" tabindex="-1"></a>merged_table <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, sql_query)</span>
+<span id="cb18-20"><a href="sql.html#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(merged_table)</span></code></pre></div>
 <p>Because we can’t use SQL we just load the merged table in using R, and create a summary of the data.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="sql.html#cb18-1" aria-hidden="true" tabindex="-1"></a>merged_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/merged_table.rds&quot;</span>)</span>
-<span id="cb18-2"><a href="sql.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(merged_table)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="sql.html#cb19-1" aria-hidden="true" tabindex="-1"></a>merged_table <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;data/merged_table.rds&quot;</span>)</span>
+<span id="cb19-2"><a href="sql.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(merged_table)</span></code></pre></div>
 <pre><code>##  merged_country     merged_year        avg_cases_dengue total_cases_flu 
 ##  Length:490         Length:490         Min.   :0.0108   Min.   :     0  
 ##  Class :character   Class :character   1st Qu.:0.0796   1st Qu.:  1696  
@@ -475,48 +475,48 @@ And again R for the same goal.</p>
 <h2><span class="header-section-number">5.6</span> Creating some plots<a href="sql.html#creating-some-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now use the merged table to create some plots to visualize the data.</p>
 <p>Create boxplot of life expectancy per continent.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="sql.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb20-2"><a href="sql.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="sql.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of Life Expectancy by Continent</span></span>
-<span id="cb20-4"><a href="sql.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged_table, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> life_expectancy, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
-<span id="cb20-5"><a href="sql.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb20-6"><a href="sql.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Boxplot of Life Expectancy by Continent&quot;</span>,</span>
-<span id="cb20-7"><a href="sql.html#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Continent&quot;</span>,</span>
-<span id="cb20-8"><a href="sql.html#cb20-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Life Expectancy&quot;</span>) <span class="sc">+</span></span>
-<span id="cb20-9"><a href="sql.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-10"><a href="sql.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Continent&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" />
-Linegraph for dengue cases in Brazil, Argentina and Bolivia.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="sql.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chosen 3 random countries</span></span>
-<span id="cb21-2"><a href="sql.html#cb21-2" aria-hidden="true" tabindex="-1"></a>selected_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>)</span>
-<span id="cb21-3"><a href="sql.html#cb21-3" aria-hidden="true" tabindex="-1"></a>filtered_data_dengue <span class="ot">&lt;-</span> merged_table[merged_table<span class="sc">$</span>country <span class="sc">%in%</span> selected_countries, ]</span>
-<span id="cb21-4"><a href="sql.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="sql.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Line plot of Dengue cases for Brazil, Argentina and Bolivia</span></span>
-<span id="cb21-6"><a href="sql.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data_dengue, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> avg_cases_dengue, <span class="at">color =</span> country)) <span class="sc">+</span></span>
-<span id="cb21-7"><a href="sql.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-8"><a href="sql.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Dengue Cases Over the Years (Selected Countries)&quot;</span>,</span>
-<span id="cb21-9"><a href="sql.html#cb21-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
-<span id="cb21-10"><a href="sql.html#cb21-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Average Dengue Cases&quot;</span>,</span>
-<span id="cb21-11"><a href="sql.html#cb21-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Country&quot;</span>) <span class="sc">+</span></span>
-<span id="cb21-12"><a href="sql.html#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="sql.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-2"><a href="sql.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="sql.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of Life Expectancy by Continent</span></span>
+<span id="cb21-4"><a href="sql.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(merged_table, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> life_expectancy, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="sql.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb21-6"><a href="sql.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Boxplot of Life Expectancy by Continent&quot;</span>,</span>
+<span id="cb21-7"><a href="sql.html#cb21-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Continent&quot;</span>,</span>
+<span id="cb21-8"><a href="sql.html#cb21-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Life Expectancy&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-9"><a href="sql.html#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-10"><a href="sql.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Continent&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+Linegraph for dengue cases in Brazil, Argentina and Bolivia.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="sql.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># chosen 3 random countries</span></span>
+<span id="cb22-2"><a href="sql.html#cb22-2" aria-hidden="true" tabindex="-1"></a>selected_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Brazil&quot;</span>, <span class="st">&quot;Argentina&quot;</span>, <span class="st">&quot;Bolivia&quot;</span>)</span>
+<span id="cb22-3"><a href="sql.html#cb22-3" aria-hidden="true" tabindex="-1"></a>filtered_data_dengue <span class="ot">&lt;-</span> merged_table[merged_table<span class="sc">$</span>country <span class="sc">%in%</span> selected_countries, ]</span>
+<span id="cb22-4"><a href="sql.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="sql.html#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Line plot of Dengue cases for Brazil, Argentina and Bolivia</span></span>
+<span id="cb22-6"><a href="sql.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data_dengue, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> avg_cases_dengue, <span class="at">color =</span> country)) <span class="sc">+</span></span>
+<span id="cb22-7"><a href="sql.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb22-8"><a href="sql.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Dengue Cases Over the Years (Selected Countries)&quot;</span>,</span>
+<span id="cb22-9"><a href="sql.html#cb22-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>,</span>
+<span id="cb22-10"><a href="sql.html#cb22-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Average Dengue Cases&quot;</span>,</span>
+<span id="cb22-11"><a href="sql.html#cb22-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Country&quot;</span>) <span class="sc">+</span></span>
+<span id="cb22-12"><a href="sql.html#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 1 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 Flu cases per capita per country.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="sql.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data to exclude NA values</span></span>
-<span id="cb23-2"><a href="sql.html#cb23-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> merged_table <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_cases_flu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(population))</span>
-<span id="cb23-3"><a href="sql.html#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="sql.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the cases by the population</span></span>
-<span id="cb23-5"><a href="sql.html#cb23-5" aria-hidden="true" tabindex="-1"></a>filtered_data<span class="sc">$</span>flu_ratio <span class="ot">&lt;-</span> filtered_data<span class="sc">$</span>total_cases_flu <span class="sc">/</span> filtered_data<span class="sc">$</span>population</span>
-<span id="cb23-6"><a href="sql.html#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="sql.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
-<span id="cb23-8"><a href="sql.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> merged_country, <span class="at">y =</span> flu_ratio)) <span class="sc">+</span></span>
-<span id="cb23-9"><a href="sql.html#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb23-10"><a href="sql.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Flu Cases per Population per Country&quot;</span>,</span>
-<span id="cb23-11"><a href="sql.html#cb23-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Country&quot;</span>,</span>
-<span id="cb23-12"><a href="sql.html#cb23-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Flu Cases per Population&quot;</span>) <span class="sc">+</span></span>
-<span id="cb23-13"><a href="sql.html#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb23-14"><a href="sql.html#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Make readable</span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="sql.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data to exclude NA values</span></span>
+<span id="cb24-2"><a href="sql.html#cb24-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="ot">&lt;-</span> merged_table <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total_cases_flu) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(population))</span>
+<span id="cb24-3"><a href="sql.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="sql.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide the cases by the population</span></span>
+<span id="cb24-5"><a href="sql.html#cb24-5" aria-hidden="true" tabindex="-1"></a>filtered_data<span class="sc">$</span>flu_ratio <span class="ot">&lt;-</span> filtered_data<span class="sc">$</span>total_cases_flu <span class="sc">/</span> filtered_data<span class="sc">$</span>population</span>
+<span id="cb24-6"><a href="sql.html#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="sql.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
+<span id="cb24-8"><a href="sql.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(filtered_data, <span class="fu">aes</span>(<span class="at">x =</span> merged_country, <span class="at">y =</span> flu_ratio)) <span class="sc">+</span></span>
+<span id="cb24-9"><a href="sql.html#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb24-10"><a href="sql.html#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Flu Cases per Population per Country&quot;</span>,</span>
+<span id="cb24-11"><a href="sql.html#cb24-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Country&quot;</span>,</span>
+<span id="cb24-12"><a href="sql.html#cb24-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Flu Cases per Population&quot;</span>) <span class="sc">+</span></span>
+<span id="cb24-13"><a href="sql.html#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-14"><a href="sql.html#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Make readable</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -525,7 +525,7 @@ Flu cases per capita per country.</p>
           </div>
         </div>
       </div>
-<a href="peer-review.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="checking.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="repdrocuing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

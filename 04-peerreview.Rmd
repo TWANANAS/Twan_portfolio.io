@@ -1,4 +1,4 @@
-# Peer review
+# Checking 
 
 In this part we will look into reproducibilty of scientific publications, we will be doing this by comparing a paper to the criteria that is available on [Researchgate](https://www.researchgate.net/publication/340244621_Reproducibility_and_reporting_practices_in_COVID-19_preprint_manuscripts), and by trying to recreate a part of the analysis from an different paper.
 
@@ -66,7 +66,7 @@ The paper investigates if elevated progesterone during the menstrual cycle,  lea
 The code and data used in this paper can be found [here](https://osf.io/93n2d/files/osfstorage). We will first take a look at the code, all the code is stored in the OCMATE_disgust2.RMD file.
 First they load the data into R using read_csv, then they calculate some simple stats like mean age and how many session completed per woman. Then they clean up the data by removing points with missing values, excluding subjects with only one session completed and removing outliers. After that some plots and a lot of tables are formed. 
 
-There is not really an introduction, they dive straight into loading libraries and importing code. There are some comments in the code but they are very basic and tell very little about the code. The code is structured in chunks with most chunks having a short header stating the goal of the code. Overall i would say that the readability of the code is a 2.5/5.
+There is not really an introduction, they dive straight into loading libraries and importing code. There are some comments in the code but they are very basic and tell very little about the code. The code is structured in chunks with most chunks having a short header stating the goal of the code. Overall i would say that the readability of the code is a 2/5.
 
 Now we will try to run the Rmarkdown file ourselves, the first time trying to knit the Rmd we encountered some issues because two packages were not installed. We installed the packages using the following lines.
 ```{r eval=FALSE}
@@ -74,5 +74,5 @@ install.packages("Matrix", dependencies = TRUE)
 install.packages("lme4", dependencies = TRUE)
 ```
 And after installing the packages the Rmd could be knitted, the entire html file can be seen [here.](docs/CopyOfOCMATE_disgust2.html) But i will share a plot here as well. 
-
-
+![Firt plot in the knitted Rmd file](data/images/First_graph_replicated_study.png)
+This is the first plot in the html file, very little is said about this plot except "# subject-mean-centre hormones # and divide by a constant to put all hormones on ~ -0.5 to +0.5 scale". It took very little effort for me to reproduce the visualizations of this paper so I will rank it 5/5 on how much effort it took to reproduce. 
