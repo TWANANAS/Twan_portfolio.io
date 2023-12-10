@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Looking ahead | A Minimal Book Example</title>
+  <title>Chapter 3 Looking ahead | Portfolio Twan</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Looking ahead | A Minimal Book Example" />
+  <meta property="og:title" content="Chapter 3 Looking ahead | Portfolio Twan" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
@@ -19,17 +19,17 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Looking ahead | A Minimal Book Example" />
+  <meta name="twitter:title" content="Chapter 3 Looking ahead | Portfolio Twan" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   
 
-<meta name="author" content="John Doe" />
+<meta name="author" content="Twan Samsom" />
 
 
-<meta name="date" content="2023-12-09" />
+<meta name="date" content="2023-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,7 +37,7 @@ set in the _output.yml file.</p>" />
   
   
 <link rel="prev" href="curriculum-vitae.html"/>
-<link rel="next" href="parts.html"/>
+<link rel="next" href="peer-review.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -58,6 +58,14 @@ set in the _output.yml file.</p>" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.31/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 <style type="text/css">
@@ -146,12 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
-</ul></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
 <li class="chapter" data-level="2" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html"><i class="fa fa-check"></i><b>2</b> Curriculum Vitae</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="curriculum-vitae.html"><a href="curriculum-vitae.html#opleidingen"><i class="fa fa-check"></i><b>2.1</b> Opleidingen</a></li>
@@ -164,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="looking-ahead.html"><a href="looking-ahead.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
 <li class="chapter" data-level="3.2" data-path="looking-ahead.html"><a href="looking-ahead.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>4</b> Parts</a></li>
+<li class="chapter" data-level="4" data-path="peer-review.html"><a href="peer-review.html"><i class="fa fa-check"></i><b>4</b> Peer review</a></li>
 <li class="chapter" data-level="5" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>5</b> SQL</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="sql.html"><a href="sql.html#getting-the-data"><i class="fa fa-check"></i><b>5.1</b> Getting the data</a></li>
@@ -182,6 +185,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="repdrocuing.html"><a href="repdrocuing.html"><i class="fa fa-check"></i><b>6</b> Repdrocuing</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="repdrocuing.html"><a href="repdrocuing.html#getting-the-data-1"><i class="fa fa-check"></i><b>6.1</b> Getting the data</a></li>
+<li class="chapter" data-level="6.2" data-path="repdrocuing.html"><a href="repdrocuing.html#normalizing-the-data"><i class="fa fa-check"></i><b>6.2</b> Normalizing the data</a></li>
+<li class="chapter" data-level="6.3" data-path="repdrocuing.html"><a href="repdrocuing.html#visualizing-the-data"><i class="fa fa-check"></i><b>6.3</b> Visualizing the data</a></li>
+<li class="chapter" data-level="6.4" data-path="repdrocuing.html"><a href="repdrocuing.html#normalizing-the-data-again"><i class="fa fa-check"></i><b>6.4</b> Normalizing the data again</a></li>
+<li class="chapter" data-level="6.5" data-path="repdrocuing.html"><a href="repdrocuing.html#visualizing-the-data-again"><i class="fa fa-check"></i><b>6.5</b> Visualizing the data again</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
 <ul>
@@ -190,6 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="covid-report.html"><a href="covid-report.html"><i class="fa fa-check"></i><b>8</b> Covid report</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -202,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Portfolio Twan</a>
           </h1>
         </div>
 
@@ -232,8 +240,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> Captioned figures and tables<a href="looking-ahead.html#captioned-figures-and-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Figures and tables <em>with captions</em> can also be cross-referenced from elsewhere in your book using <code>\@ref(fig:chunk-label)</code> and <code>\@ref(tab:chunk-label)</code>, respectively.</p>
 <p>See Figure <a href="looking-ahead.html#fig:nice-fig">3.1</a>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="looking-ahead.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
-<span id="cb3-2"><a href="looking-ahead.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="looking-ahead.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb1-2"><a href="looking-ahead.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig"></span>
 <img src="_main_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
 <p class="caption">
@@ -241,10 +249,10 @@ Figure 3.1: Here is a nice figure!
 </p>
 </div>
 <p>Don’t miss Table <a href="looking-ahead.html#tab:nice-tab">3.1</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="looking-ahead.html#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb4-2"><a href="looking-ahead.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb4-3"><a href="looking-ahead.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb4-4"><a href="looking-ahead.html#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="looking-ahead.html#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-2"><a href="looking-ahead.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb2-3"><a href="looking-ahead.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb2-4"><a href="looking-ahead.html#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab">Table 3.1: </span>Here is a nice table!</caption>
 <thead>
@@ -305,7 +313,7 @@ Figure 3.1: Here is a nice figure!
         </div>
       </div>
 <a href="curriculum-vitae.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="parts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="peer-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
