@@ -50,16 +50,29 @@ There is no ethics statement and nothing is said about code used.
 
 <h2>
 
-My host's enemy is my enemy: plasmids carrying CRISPR-Cas as a defence against phages
+Hormonal correlates of pathogen disgust: testing the compensatory prophylaxis hypothesis
 
 </h2>
 
-<https://doi.org/10.1101/2023.11.01.565096>
+<https://doi.org/10.1016/j.evolhumbehav.2017.12.004.>
 
 <h5>
 
-Berit Siedentop, Dario Rüegg, Sebastian Bonhoeffer, Hélène Chabas. (2023)
+Benedict C. Jones, Amanda C. Hahn, Claire I. Fisher, Hongyi Wang, Michal Kandrik, Anthony J. Lee, Joshua M. Tybur, Lisa M. DeBruine(2018)
 
 </h5>
+The paper investigates if elevated progesterone during the menstrual cycle,  leads to a higher pathogen disgust. 
 
-The code and data used in this paper can be found [here](https://osf.io/hcvsr/) we will try to 
+The code and data used in this paper can be found [here](https://osf.io/93n2d/files/osfstorage). We will first take a look at the code, all the code is stored in the OCMATE_disgust2.RMD file.
+First they load the data into R using read_csv, then they calculate some simple stats like mean age and how many session completed per woman. Then they clean up the data by removing points with missing values, excluding subjects with only one session completed and removing outliers. After that some plots and a lot of tables are formed. 
+
+There is not really an introduction, they dive straight into loading libraries and importing code. There are some comments in the code but they are very basic and tell very little about the code. The code is structured in chunks with most chunks having a short header stating the goal of the code. Overall i would say that the readability of the code is a 2.5/5.
+
+Now we will try to run the Rmarkdown file ourselves, the first time trying to knit the Rmd we encountered some issues because two packages were not installed. We installed the packages using the following lines.
+```{r eval=FALSE}
+install.packages("Matrix", dependencies = TRUE)
+install.packages("lme4", dependencies = TRUE)
+```
+And after installing the packages the Rmd could be knitted, the entire html file can be seen [here.](docs/CopyOfOCMATE_disgust2.html) But i will share a plot here as well. 
+
+
