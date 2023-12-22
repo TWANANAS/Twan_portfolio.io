@@ -24,6 +24,7 @@ normalizing-the-data
 visualizing-the-data
 normalizing-the-data-again
 visualizing-the-data-again
+step-wise-plan-for-dose-response-curve-analysis
 r-package
 section
 covid-report
