@@ -6,7 +6,7 @@ First we need to get the data for the exercise, we use wget to download them fro
 ```{bash, eval=FALSE}
 
 # Go to data_raw
-cd data_raw/ 
+cd sql/raw_data/ 
 
 # Download the flu dataset
 wget -O flu_data.csv https://raw.githubusercontent.com/DataScienceILC/tlsc-dsfb26v-20_workflows/main/data/flu_data.csv
@@ -29,8 +29,8 @@ library(dslabs)
 ```{r}
 
 # Load the different data
-flu_data <- read.csv("data_raw/flu_data.csv", skip = 11) # skip = 11 to skip the first 11 lines which contain metadata
-dengue_data <- read.csv("data_raw/dengue_data.csv", skip = 11)
+flu_data <- read.csv("sql/raw_data/flu_data.csv", skip = 11) # skip = 11 to skip the first 11 lines which contain metadata
+dengue_data <- read.csv("sql/raw_data/dengue_data.csv", skip = 11)
 gapminder_data <- as_tibble(gapminder)
 
 
@@ -71,16 +71,16 @@ tidy_dengue_data$country <- as.factor(tidy_dengue_data$country)
 
 
 # Save tidy_dengue_data
-write.csv(tidy_dengue_data, "data/tidy_dengue_data.csv")
-saveRDS(tidy_dengue_data, "data/tidy_dengue_data.rds")
+write.csv(tidy_dengue_data, "sql/data/tidy_dengue_data.csv")
+saveRDS(tidy_dengue_data, "sql/data/tidy_dengue_data.rds")
 
 # Save tidy_flu_data
-write.csv(tidy_flu_data, "data/tidy_flu_data.csv")
-saveRDS(tidy_flu_data, "data/tidy_flu_data.rds")
+write.csv(tidy_flu_data, "sql/data/tidy_flu_data.csv")
+saveRDS(tidy_flu_data, "sql/data/tidy_flu_data.rds")
 
 # Save clean gapminder_data
-write.csv(gapminder_data, "data/tidy_gapminder_data.csv")
-saveRDS(gapminder_data, "data/tidy_gapminder_data.rds")
+write.csv(gapminder_data, "sql/data/tidy_gapminder_data.csv")
+saveRDS(gapminder_data, "sql/data/tidy_gapminder_data.rds")
 
 ```
 The chunck beneath is to create an connection object, that can be used to connect to a Postgres database.
@@ -116,7 +116,7 @@ We use both SQL and R to inspect the data in the same way
 
 ### Gapminder
 Here we order the gapminder data by life expactancy.
-![Using SQL to order the gapminder data by life expectancy](data/images/SQL_example_gapminder.png)
+![Using SQL to order the gapminder data by life expectancy](sql/images/SQL_example_gapminder.png)
 Using R with the same goal.
 ```{r}
 gapminder_data %>%
@@ -124,7 +124,7 @@ gapminder_data %>%
 ```
 ### Flu
 Here we select only the cases in France from the flu data.
-![Using SQL to select only the cases in France in the flu data ](data/images/SQL_example_flu.png)
+![Using SQL to select only the cases in France in the flu data ](sql/images/SQL_example_flu.png)
 Again using R for the same goal.
 ```{r}
 tidy_flu_data %>%
@@ -133,7 +133,7 @@ tidy_flu_data %>%
 ```
 ### Dengue
 Here we sort dengue by cases from high to low.
-![Using SQL to sort dengue by cases](data/images/SQL_example_dengue.png)
+![Using SQL to sort dengue by cases](sql/images/SQL_example_dengue.png)
 And again R for the same goal.
 ```{r}
 tidy_dengue_data %>%
@@ -196,7 +196,7 @@ summary(merged_table)
 ```
 Because we can't use SQL we just load the merged table in using R, and create a summary of the data.
 ```{r}
-merged_table <- readRDS("data/merged_table.rds")
+merged_table <- readRDS("sql/data/merged_table.rds")
 summary(merged_table)
 ```
 
