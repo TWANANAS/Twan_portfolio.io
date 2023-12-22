@@ -1,1 +1,20 @@
-# 
+
+# Introduction to projecticum
+
+Naast de lessen van workflows heb ik ook aan een project gewerkt, hieronder staat de introductie van dit project. De bronnen zijn bijgehouden en verwezen met behulp van zotero.
+
+## Introductie
+Het toenemen van antibiotica resistentie is een zorgwekkend probleem wereldwijd. Jaarlijks worden er 1,2 miljoen sterfgevallen veroorzaakt door antibiotica resistentie [@murrayGlobalBurdenBacterial2022]. Antibioticaresistentie treedt op wanneer bacteriën zich aanpassen en ongevoelig worden voor de effecten van antibiotica, waardoor deze geneesmiddelen minder effectief worden bij de behandeling van bacteriële infecties. 
+
+## Plasmiden
+Een belangrijke factor in de verspreiding van antibioticaresistentie zijn plasmiden, kleine cirkelvormige stukjes DNA die naast het chromosomale DNA in bacteriën voorkomen. Deze plasmiden kunnen verschillende genen bevatten, waaronder genen die coderen voor antibioticaresistentie. De plasmiden kunnen niet alleen door het delen van de bacteriën doorgegeven worden, maar ook via ‘horizontal gene transfer’ waarbij plasmiden worden overgedragen van de ene bacterie naar de andere. [@harrisonPlasmidmediatedHorizontalGene2012] Dit stelt bacteriën in staat om snel genetisch materiaal uit te wisselen, waardoor de resistentie tegen antibiotica zich gemakkelijk kan verspreiden tussen verschillende bacteriële populaties, meestal naar bacteriën van de zelfde soort maar kan ook plaats vinden tussen verschillende soorten [@dahlbergInterspeciesBacterialComjugation1998].
+
+## One Health
+Volgens het WHO zijn de grootste drijfveren van antibiotica resistentie is het overmatig gebruik van antibiotica in zowel mensen als in de landbouw [@AntimicrobialResistance]. Een initiatief om de antibioticaresistentie aan te pakken is het One Health aanpak. One Health is een verzameling van 10 instanties o.a. verschillende universiteiten medisch centra en het RIVM. De One Health-aanpak, richt zich op het gezamenlijk aanpakken van gezondheidsproblemen op het vlak van menselijke gezondheid, dierlijke gezondheid en milieu. Om de verspreiding van resistente micro-organismen te beheersen en nieuwe infecties te voorkomen @OneHealthRIVM.
+
+## Het Project
+Twee medestudenten en ik hebben de kans gekregen om de skills die we hebben opgebouwd tijdens de cursus ‘Datascience for biology’ toe te passen in een project. Het project waar wij aan mogen werken is een project met een externe opdracht gever van het RIVM.
+Voor ons project bouwen we verder aan het werk van een vorige groep, die hebben een pipeline gemaakt in R en BASH, gerapporteerd in een Rmarkdown. Met deze pipeline kan vanuit .fasta sequenties van bacteriën informatie gewonnen worden over de antibioticaresistentie genen op de plasmiden die in deze bacteriën aanwezig zijn. Deze bedoeling van deze pipeline is dat deze duizenden sequenties van bacteriën kan gaan analyseren.
+Wij hebben diversen doelen voor het project, zo voegen wij verschillende tools toe aan de pipeline om meer informatie op te doen over de plasmiden. We clusteren de plasmiden die veel op elkaar lijken, we bepalen a.d.h.v. de plasmide sequenties de mobiliteit van de plasmiden, we bepalen het replicontypes van de plasmiden en tot slot nog de virulentiegenen.  Voor het verkrijgen van deze informatie worden veel tools gebruikt, en al deze tools rapporteren de resultaten op andere manieren, een belangrijke taak in ons project is dus ook het verzamelen van deze resultaten van deze tools en dit overzichtelijk rapporteren in een metadata bestand. Nieuwe sequenties moeten geanalyseerd kunnen worden door de pipeline en de nieuwe data moet in het metadata toegevoegd worden.
+Daarnaast gaan we ook een Rshiny maken waarin we de data visualiseren, we willen deze Rshiny zo gaan maken dat deze interactief is .
+
