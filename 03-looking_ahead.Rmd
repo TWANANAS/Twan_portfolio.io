@@ -1,5 +1,34 @@
 # Learning a New Skill
 
-I will be using the tool [Sturgeon](https://github.com/marcpaga/sturgeon) to clasify tumors found in the ccentral nervous system. I will be following the steps in this paper ["Ultra-fast deep-learned CNS tumour classification during surgery"](https://www.nature.com/articles/s41586-023-06615-2#Sec2) and using this [GSE209865](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE209865) dataset from GEO.
+In this part I will share 
 
+I started by creating a plan
 
+Planning
+
+Day 1
+
+- Read the paper about sturgeon, ["Ultra-fast deep-learned CNS tumour classification during surgery"](https://www.nature.com/articles/s41586-023-06615-2#Sec2)
+- Trying to find data that can be used
+   - Sequences of tumours in the CNS 
+   - The data should be labeled so the results can be compared
+   - Data ideally needs to be nanopore data
+   
+- Installing required programs(depends on the data I found)
+  - Sturgeon - https://github.com/marcpaga/sturgeon
+  - Crossmap - https://github.com/liguowang/CrossMap
+  - Modkit - https://github.com/nanoporetech/modkit
+  - Guppy - https://github.com/nanoporetech/pyguppyclient
+
+Day 2
+
+- Using the needed tools to prepare the data for running sturgeon.
+- Try to run sturgeon on a couple of files to see how long it would take to run on all 415 files.
+
+Day 3/4
+
+- Run sturgeon on more, perhaps all files.
+- Gather the reference diagnosis for every file.
+- Visualize the data.
+
+I will be using the tool [Sturgeon](https://github.com/marcpaga/sturgeon) to clasify tumors found in the central nervous system. I will be following the steps in this paper ["Ultra-fast deep-learned CNS tumour classification during surgery"](https://www.nature.com/articles/s41586-023-06615-2#Sec2) and using this [GSE209865](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE209865) dataset from GEO.
