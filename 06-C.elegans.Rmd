@@ -2,28 +2,35 @@
 
 In this part we will be reproducing an analysis with data supplied by J. Louter (INT/ILC) Different compounds were tested on adult C.elegans and the amount of offspring were counted.
 
+```{r, message = FALSE}
+# Load libraries
+library(readr)
+library(ggplot2)
+library(DT)
+library(readxl)
+library(dplyr)
+```
+
 ## Getting the data
 
 First we will need to get the data from somewhere, we use wget to download the excel file from github.
 
-```{bash results='hide'}
-# Go to data_raw
-cd data_raw/ 
+```{bash, results='hide'}
+# Go to raw_data
+cd c.elegans/raw_data/ 
 
 # Download the excel sheet dataset
 wget -O "CE.LIQ.FLOW.062_Tidydata.xlsx" https://github.com/DataScienceILC/tlsc-dsfb26v-20_workflows/raw/main/data/CE.LIQ.FLOW.062_Tidydata.xlsx
 
 ```
 
+
 Now we can read the file into R.
 
-```{r warning=FALSE}
-# Load libraries
-library(readxl)
-library(dplyr)
 
+```{r, message = FALSE}
 # Read the excel file
-C.elegans_data <- read_excel(path = "data_raw/CE.LIQ.FLOW.062_Tidydata.xlsx")
+C.elegans_data <- read_excel(path = "c.elegans/raw_data/CE.LIQ.FLOW.062_Tidydata.xlsx")
 ```
 
 The file is now read into R.
@@ -39,9 +46,6 @@ C.elegans_data %>% select(c(RawData, compName, compConcentration))
 Here we see that compConcentration is of chr type, so we have to change it into a numeric type.
 
 ```{r}
-# Load readr
-library(readr)
-
 # Use parse_number to change the conecentration into numeric
 C.elegans_data$compConcentration <- parse_number(C.elegans_data$compConcentration)
 
@@ -54,9 +58,6 @@ We can see the type is now of dbl type.
 ## Visualizing the data
 
 ```{r}
-# Load required libraries
-library(ggplot2)
-
 # Create scatterplot
 ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color = compName, shape = expType)) +
   geom_point() +
@@ -64,7 +65,7 @@ ggplot(C.elegans_data, aes(x = compConcentration, y = RawData, color = compName,
 
 ```
 
-The graph is really cramped into the left part because of a couple of very high concentrations. This occurs because the concentrations are created by diluting the previous solution by 1/10.
+The graph is really cramped into the left part because of a couple of very high concentrations. This occurs because the concentrations are created by diluting the previous solution by 1/10, so the concentrations are exponential.
 
 An obvious fix for this is to use an log10 transformation on the x-axis.
 
@@ -90,8 +91,6 @@ C.elegans_data$compUnit %>% unique()
 Lets take a look to see where pct is being used.
 
 ```{r}
-# Load DT
-library(DT)
 # Select rows where compUnit is pct and select the more important columns
 C.elegans_data %>% filter(compUnit == "pct") %>% select(c(compName, expType, RawData, compConcentration, compUnit)) %>% 
   datatable(options = list(pageLength = 5)) # Show as datatable
@@ -135,6 +134,8 @@ The negative control for this experiment is S-medium 0 nM so basically nothing i
 
 > *Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan.*
 
+Normalizing the data for the negative control helps compare different compounds fairly. It removes baseline differences and it makes it easier to see the specific effects of each compound on offspring count. 
+
 Normalize data so the mean of the negative control is 1.
 
 ```{r}
@@ -150,3 +151,66 @@ ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = Normalized_R
   geom_point(position = position_jitter(width = 0.2, height = 0.2)) + 
   labs(x = "Log10(Compound Concentration)", y = "Normalized Raw Data") 
 ```
+
+## Step-wise Plan for Dose-Response Curve Analysis
+
+Usually after normalizing the results like this, dose response curves are made to assess whether different concentrations have a different effect on the offspring count, and to find out how the curves from the different compounds compare to each other. 
+
+One way to do this is using the [{drc}](https://cran.r-project.org/web/packages/drc/index.html) package in R
+https://github.com/RaoulWolf/FMI330
+<h5>
+
+Step 1, Fitting Dose-Response Curves
+
+</h5>
+
+First we should use the {drm} function from the {drc} package to fit a dose-response model for each compound.
+This would look something like this:
+```{r, eval = FALSE}
+fronds_number_inhibition.drm <- drm(formula = Normalized_RawData ~ log10(compConcentration + 0.01),
+                                     data = C.elegans_data, fct = LL.4(names = c("Slope", "Lower Limit", "Upper Limit", "EC50")))
+```
+The above code doesn't work right now but it should look something like that.
+
+<h5>
+
+Step 2, Plotting the Dose-Response Curves
+
+</h5>
+
+Now we can plot the Dose-Response Curves
+```{r, eval = FALSE}
+data.frame(compConcentration = seq(from = min(C.elegans_data$compConcentration),
+                                    to = max(C.elegans_data$compConcentration),
+                                    length.out = 1000)) %>% 
+  mutate(fit = predict(fronds_number_inhibition.drm, newdata = .), 
+         lwr = predict(fronds_number_inhibition.drm, newdata = ., interval = "confidence", vcov. = sandwich)[, 2], 
+         upr = predict(fronds_number_inhibition.drm, newdata = ., interval = "confidence", vcov. = sandwich)[, 3]) %>% 
+  ggplot() +
+  geom_ribbon(mapping = aes(x = compConcentration, ymin = lwr, ymax = upr), alpha = 0.2) +
+  geom_line(mapping = aes(x = compConcentration, y = fit), size = 1) +
+  geom_point(mapping = aes(x = compConcentration, y = Normalized_RawData), data = C.elegans_data, size = 2, alpha = 0.5) +
+  labs(x = "Diuron (mg/L)", 
+       y = "Fronds number inhibition (%)") +
+  theme_light()
+```
+<h5>
+
+Step 3, Estimating LC50
+
+</h5>
+
+To complete the LC50 analysis, we need to extract LC50 (lethal concentration for 50% inhibition).
+```{r, eval=FALSE}
+lc50 <- ED(fronds_number_inhibition.drm, 50)
+```
+
+<h5>
+
+Step 4, ANOVA
+
+</h5>
+As the last stap we would want to test for significant differences between the compunds this could be done with an ANOVA.
+
+
+Anova -> https://www.researchgate.net/publication/278414280_Evaluation_of_the_toxicity_and_repellence_of_an_organic_fatty_acids_mixture_C8910_against_insecticide_susceptible_and_resistant_strains_of_the_major_malaria_vector_Anopheles_funestus_Giles_Diptera_Cul
