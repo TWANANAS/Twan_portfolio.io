@@ -1,0 +1,115 @@
+# Curriculum Vitae
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+::: {style="display: flex;"}
+::: {style="width: 50%;"}
+**Adres:** \*\*\*\*\*\*\
+**Telefoon:** \*\*\*\*\*\*\*\*\*\*\*\
+**Mail:** [Twan.samsom\@student.hu.nl](mailto:Twan.samsom@student.hu.nl){.email}\
+**Geboortedatum:** \*\*\*\*\*\*\*\*\*\*
+:::
+
+::: {style="width: 70%;"}
+Ik ben een enthousiaste derdejaarsstudent Life Sciences aan de Hogeschool Utrecht, met een sterke focus op biologie en data science. Ik heb ervaring opgedaan in diverse projecten, waar ik o.a. mijn data-analysevaardigheden inzet.
+:::
+:::
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+## Opleidingen
+
+**Hogeschool Utrecht . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9/2023 -- Heden\
+*Minor:*** *Data Sciences for Biology*
+
+-   Vakken: Data Analysis Using R, Advanced bioinformatica.
+
+-   Projecten
+
+    -   *Project RNA sequencing: Het effect van BCLXL en ONECUT1 op de genexpressie van fibroblasten,*\
+        Beschrijving: Gebruik van R, R packages zoals: DESeq2 en ggplot, en het uitvoeren van een GO term enrichment analysis.
+    -   *Project Metagenomics: Identificatie van bacteriesoorten\
+        *Beschrijving: Identificeren van bacteriën in een monster met gebruik van Kraken2 en Bracken voor metagenomics analyse.
+
+**Hogeschool Utrecht . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9/2021 -- Heden**\
+*Biologie en Medisch Laboratoriumonderzoek (Life Sciences) **. . . . . . .** Verwachte afstudeerdatum: 8/2025*
+
+-   Vakken: Data Science, Statistiek & Excel.
+
+-   Projecten
+
+    -   *Project Data Science: Het effect van PFOS op de genexpressie van ACOX1,*\
+        Beschrijving: Onderzoek naar het effect van PFOS op genexpressie, met gebruik van BASH voor data-manipulatie en JASP voor statistiek.
+    -   *Project Farmacon: Het effect van Donepezil op kunstmatig geïnduceerde paralyse in CL4176 C. elegans\
+        *Beschrijving: Onderzoek naar het effect van Donepezil op amyloïde plaquevorming. Gebruik van de ingebouwde ImageJ macrofunctie om een klein script te schrijven voor de automatisering van data-analysestappen.
+
+**Propedeuse** **Hogeschool Utrecht** **.** **. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Behaald in 2022\
+**Biologie en Medisch Laboratoriumonderzoek (Life Sciences)
+
+**Minkema College (havo)** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **. 9/2015 -- 7/2021\
+**Profiel N&G / N&T
+
+**MBO Rijnland** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **9/2020 -- 7/2021**\
+Certificaat Biologie VWO
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+## Werk
+
+**Pizzeria Bella Milano, Woerden** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **. 04/2019 -- Heden**
+
+-   Opnemen en verwerken van bestellingen
+
+-   Bestellingen klaar maken en bezorgen
+
+-   Onderhouden van de website
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+## Talen
+
+-   Nederlands (Moedertaal)
+
+-   Engels (Vloeiend)
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
+
+## Vaardigheden
+
+**Programmeertalen**
+
+-   R
+
+-   BASH
+
+**Rapportage en Presentatie**
+
+-   rmarkdown voor het maken van dynamische rapporten
+
+**Data Analyse**
+
+-   Ervaring met data-analyse en statistiek in R
+
+-   Gebruik van ggplot2 voor datavisualisatie
+
+**Tekstmanipulatie**
+
+-   Schrijven van BASH-scripts/pipelines
+
+-   Gebruik van AWK voor tekstmanipulatie
+
+**Specifieke Libraries**
+
+-   DESeq2: Differentiële expressie-analyse
+
+-   Kraken2: Identificatie van bacteriën in metagenomics
+
+-   tidyverse: Een verzameling van R-packages voor data science en data wrangling
+
+<hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 10px;">
+
+[2023-11-26]{style="float: right;"}
