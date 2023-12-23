@@ -6,11 +6,16 @@ description: "This is my portfolio written in a Rbookdown."
 link-citations: no
 github-repo: rstudio/bookdown-demo
 ---
-# Portfolio Twan Samsom
+
+# Portfolio Twan Samsom {-}
+
+**Wees welkom!**
+
 Mijn naam is Twan Samsom en tijdens het volgen van mijn minor 'Data sciences for biology' heb ik o.a. gewerkt aan het maken van dit portfolio. In dit portfolio heb ik verschillende skills die ik heb opgedaan geraporteerd, het gross van de tekst heb ik in het Engels geschreven.
 
-Schroom niet om een kijkje te nemen, een goed idee is om te beginnen bij mijn [Curriculum Vitae].
+Schroom niet om een kijkje te nemen, een goed idee is om te beginnen bij mijn *[Curriculum Vitae]*.
 
+Stukje uit mijn cv:
 *Ik ben een enthousiaste derdejaarsstudent Life Sciences aan de Hogeschool Utrecht, met een sterke focus op biologie en data science. Ik heb ervaring opgedaan in diverse projecten, waar ik o.a. mijn data-analysevaardigheden inzet.*
 
 ```{r include=FALSE}
@@ -19,4 +24,5 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+
 [2023-12-23]{style="float: right;"}
