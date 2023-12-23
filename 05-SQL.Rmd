@@ -216,7 +216,9 @@ ggplot(merged_table, aes(x = continent, y = life_expectancy, fill = continent)) 
   theme_minimal() +
   scale_fill_discrete(name = "Continent")
 ```
+
 Linegraph for dengue cases in Brazil, Argentina and Bolivia.
+
 ```{r}
 # chosen 3 random countries
 selected_countries <- c("Brazil", "Argentina", "Bolivia")
@@ -231,7 +233,9 @@ ggplot(filtered_data_dengue, aes(x = year, y = avg_cases_dengue, color = country
        color = "Country") +
   theme_minimal()
 ```
+
 Flu cases per capita per country.
+
 ```{r}
 # Filter data to exclude NA values
 filtered_data <- merged_table %>% filter(!is.na(total_cases_flu) & !is.na(population))
@@ -250,3 +254,5 @@ ggplot(filtered_data, aes(x = merged_country, y = flu_ratio)) +
 
 
 ```
+
+In this graph we can see in what countries Flu is most common.
