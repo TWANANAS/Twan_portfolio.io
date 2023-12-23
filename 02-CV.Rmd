@@ -21,7 +21,7 @@ Ik ben een enthousiaste derdejaarsstudent Life Sciences aan de Hogeschool Utrech
 
 <hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
 
-## Opleidingen
+## Opleidingen {-}
 
 **Hogeschool Utrecht . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9/2023 -- Heden\
 *Minor:*** *Data Sciences for Biology*
@@ -58,7 +58,7 @@ Certificaat Biologie VWO
 
 <hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
 
-## Werk
+## Werk {-}
 
 **Pizzeria Bella Milano, Woerden** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **.** **. 04/2019 -- Heden**
 
@@ -70,7 +70,7 @@ Certificaat Biologie VWO
 
 <hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
 
-## Talen
+## Talen {-}
 
 -   Nederlands (Moedertaal)
 
@@ -78,7 +78,7 @@ Certificaat Biologie VWO
 
 <hr style="border: 2px solid #ddd; margin-top: 20px; margin-bottom: 20px;">
 
-## Vaardigheden
+## Vaardigheden {-}
 
 **Programmeertalen**
 
