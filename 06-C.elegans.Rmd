@@ -132,8 +132,6 @@ ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = RawData, col
 
 The negative control for this experiment is S-medium 0 nM so basically nothing is added, and the positive control is a high concentration ethanol.
 
-> *Think about how you would analyze this experiment to learn whether there is indeed an effect of different concentrations on offspring count and whether the different compounds have a different curve (IC50). Write down you analysis as a step-wise plan.*
-
 Normalizing the data for the negative control helps compare different compounds fairly. It removes baseline differences and it makes it easier to see the specific effects of each compound on offspring count. 
 
 Normalize data so the mean of the negative control is 1.
@@ -157,7 +155,8 @@ ggplot(C.elegans_data, aes(x = log10(compConcentration + 0.01), y = Normalized_R
 Usually after normalizing the results like this, dose response curves are made to assess whether different concentrations have a different effect on the offspring count, and to find out how the curves from the different compounds compare to each other. 
 
 One way to do this is using the [{drc}](https://cran.r-project.org/web/packages/drc/index.html) package in R
-https://github.com/RaoulWolf/FMI330
+
+I used code, for the steps using the drc package from, https://github.com/RaoulWolf/FMI330
 <h5>
 
 Step 1, Fitting Dose-Response Curves
@@ -213,4 +212,3 @@ Step 4, ANOVA
 As the last stap we would want to test for significant differences between the compunds this could be done with an ANOVA.
 
 
-Anova -> https://www.researchgate.net/publication/278414280_Evaluation_of_the_toxicity_and_repellence_of_an_organic_fatty_acids_mixture_C8910_against_insecticide_susceptible_and_resistant_strains_of_the_major_malaria_vector_Anopheles_funestus_Giles_Diptera_Cul
