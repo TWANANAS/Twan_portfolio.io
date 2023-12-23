@@ -1,24 +1,17 @@
---- 
-title: "Portfolio Twan"
-author: "Twan Samsom"
-date: "`r Sys.Date()`"
+---
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [bibliography.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
-description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
-  set in the _output.yml file.
+bibliography: [book.bib, packages.bib]
+description: "This is my portfolio written in a Rbookdown."
 link-citations: no
 github-repo: rstudio/bookdown-demo
 ---
+# Portfolio Twan Samsom
+Mijn naam is Twan Samsom en tijdens het volgen van mijn minor 'Data sciences for biology' heb ik o.a. gewerkt aan het maken van dit portfolio. In dit portfolio heb ik verschillende skills die ik heb opgedaan geraporteerd, het gross van de tekst heb ik in het Engels geschreven.
 
-# About
+Schroom niet om een kijkje te nemen, een goed idee is om te beginnen bij mijn [Curriculum Vitae].
 
-This is my portfolio written in **Markdown**.
-
+*Ik ben een enthousiaste derdejaarsstudent Life Sciences aan de Hogeschool Utrecht, met een sterke focus op biologie en data science. Ik heb ervaring opgedaan in diverse projecten, waar ik o.a. mijn data-analysevaardigheden inzet.*
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
@@ -26,3 +19,4 @@ knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 ```
+[2023-12-23]{style="float: right;"}
