@@ -1,9 +1,4 @@
-portfolio-twan-samsom
 curriculum-vitae
-opleidingen
-werk
-talen
-vaardigheden
 learning-a-new-skill
 planning
 planning-after-finding-dataset
