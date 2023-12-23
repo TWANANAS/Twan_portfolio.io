@@ -2,7 +2,7 @@
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
-description: "This is my portfolio written in a Rbookdown."
+description: "Dit is het portfolio van Twan Samsom"
 link-citations: no
 github-repo: rstudio/bookdown-demo
 ---
