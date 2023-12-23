@@ -1,0 +1,16 @@
+# Guerrilla Analytics Framework
+During the lessons workflows I learned to work following the Guerrilla analytics framework principles.
+
+We learned multiple things here such as
+
+  - Working in Github for version control.
+  - Automating things.
+  - And maintaning an organized folder structure.
+
+Here I ordered the folder structure from a fellow classmates daur2 folders, I divided everthing into seperate projects te keep everthing clear and easy to find.
+
+```{r}
+fs::dir_tree("daur2_correct_structure")
+```
+
+
